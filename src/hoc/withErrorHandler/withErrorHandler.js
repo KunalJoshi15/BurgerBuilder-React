@@ -18,7 +18,7 @@ const withErrorHandler = (WrappedComponent,axios)=>{
                 this.setState({error:error})
             })
         }
-
+// leaks will happen if the interceptors are not ejected.
         componentWillUnmount(){
             axios.interceptors.request.eject(this.reqInterceptors)
             axios.interceptors.response.eject(this.resInterceptors)
